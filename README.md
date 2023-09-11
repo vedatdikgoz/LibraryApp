@@ -2,6 +2,12 @@
 
 LibraryApp bir kütüphanedeki kitapları resimleri ile birlikte görüntülemenizi sağlayan, ayrıca yeni kitap eklemenizi ve kitapları ödünç vermeyi sağlayan, .Net Framework ü ile katmanlı mimari kullanılarak yazılmış bir MVC uygulamasıdır.
 
+Code First yaklaşımı kullanılarak Book ve BorrowedBook tabloları oluşturulmuştur. 
+```sh
+add-migration Initial
+update-database
+```
+
 ## Anasayfa örnek görüntüsü
 ![Anasayfa](https://github.com/vedatdikgoz/LibraryApp/blob/master/LibraryApp.WebUI/wwwroot/img/anasayfa.jpg)
 
