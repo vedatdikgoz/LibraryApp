@@ -1,0 +1,43 @@
+﻿@model LibraryApp.Entities.Concrete.BorrowedBook
+
+@{
+    ViewData["Title"] = "BorrowBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-3">
+    <div class="row">
+        <div class="mx-auto col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Kitap Ödünç Verme</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Home" asp-action="BorrowBook" method="post">
+                        <input type="hidden" id="bookId" name="BookId" value="@ViewBag.BookId">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Adı Soyadı</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" asp-for="BorrowerName">
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="form-group row">
+                            <label for="borrowDate" class="col-lg-3 col-form-label form-control-labe">Teslim Tarihi:</label>
+                            <div class="col-lg-9">
+                                <input type="date" class="form-control" id="returnDate" name="ReturnDate">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

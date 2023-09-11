@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<LibraryApp.Entities.Concrete.Book>
+
+<div>
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th>Kitap Adı</th>
+                <th>Yazar</th>
+                <th>Resim</th>
+                <th>Durum</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.BookName</td>
+                    <td>@book.Author</td>
+                    <td><img src="~/img/@book.ImageUrl" width="80" /></td>
+                    @if (book.IsAvailable == true)
+                    {
+                        <td>Kütüphanede</td>
+                    }
+                    else
+                    {
+                        <td>Dışarıda</td>
+                    }
+
+                    @if (book.IsAvailable == true)
+                    {
+                        <td><a asp-controller="Home" asp-action="BorrowBook" asp-route-id="@book.BookId" class="btn btn-success btn-sm">Ödünç Ver</a></td>
+                    }
+                    else
+                    {
+                        @foreach (var item in (List<LibraryApp.Entities.Concrete.DTOs.BorrowedBookDTO>)ViewBag.BorrowedBookList)
+                        {
+                            @if(item.BookId == book.BookId)
+                            {
+                                <td>@item.BorrowerName - @item.ReturnDate.ToShortDateString()</td>
+                            }
+                                                      
+                        }
+                        
+                    }
+                    
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
