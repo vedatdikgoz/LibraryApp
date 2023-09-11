@@ -2,11 +2,13 @@
 
 LibraryApp bir kütüphanedeki kitapları resimleri ile birlikte görüntülemenizi sağlayan, ayrıca yeni kitap eklemenizi ve kitapları ödünç vermeyi sağlayan, .Net Framework ü ile katmanlı mimari kullanılarak yazılmış bir MVC uygulamasıdır.
 
-Code First yaklaşımı kullanılarak Book ve BorrowedBook tabloları oluşturulmuştur. 
+Code First yaklaşımı kullanılarak Books ve BorrowedBooks tabloları oluşturulmuştur. 
 ```sh
 add-migration Initial
 update-database
 ```
+Kitapların listelendiği tabloda ödünç verilmiş kitabı kimin aldığı ve ne zaman iade edeceği bilgisini göstermek için DataAccess katmanında LINQ sorgusu kullanılmıştır.
+BorrowedBooks tablosunu önce BookId'ye göre gruplayıp, her grup için en büyük ReturnDate(iade tarihi) değeri bulunur, sonra bu bilgileri kullanarak iki tabloyu birleştirilir ve BookId, BorrowerName ve ReturnDate değerleri alınır.
 
 ## Anasayfa örnek görüntüsü
 ![Anasayfa](https://github.com/vedatdikgoz/LibraryApp/blob/master/LibraryApp.WebUI/wwwroot/img/anasayfa.jpg)
